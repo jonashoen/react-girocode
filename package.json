@@ -1,0 +1,20 @@
+{
+  "name": "react-girocode",
+  "version": "1.0.0",
+  "description": "A react component for displaying an EPC-QR-Code",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Jonas Hönisch",
+  "license": "ISC",
+  "dependencies": {
+    "ibantools": "^4.3.3",
+    "react": "^18.2.0",
+    "react-qr-code": "^2.0.11"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.12",
+    "typescript": "^5.1.3"
+  }
+}
