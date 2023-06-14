@@ -8,6 +8,12 @@
   },
   "author": "Jonas Hönisch",
   "license": "ISC",
+  "keywords": [
+    "girocode",
+    "react",
+    "qr",
+    "epc-qr-code"
+  ],
   "dependencies": {
     "ibantools": "^4.3.3",
     "react": "^18.2.0",
