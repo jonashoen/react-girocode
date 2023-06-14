@@ -8,6 +8,7 @@ import Identification from "./interfaces/Identification";
 
 import StringOfLength from "./interfaces/StringOfLenght";
 import EpcQrCode, { EpcQrCodeToString } from "./interfaces/EpcQrCode";
+import QRCode from "react-qr-code";
 
 interface Props {
   encoding?: Encoding;
@@ -19,7 +20,7 @@ interface Props {
   reference?: string;
   text?: string;
   information?: string;
-  render: (data: string) => React.ReactNode;
+  render?: (data: string) => React.ReactNode;
 }
 
 const Girocode: React.FC<Props> = ({
@@ -59,7 +60,11 @@ const Girocode: React.FC<Props> = ({
 
   const codeData = EpcQrCodeToString(epcQrCode);
 
-  return render(codeData);
+  if (render) {
+    return render(codeData);
+  }
+
+  return <QRCode value={codeData} level="M" />;
 };
 
 export default Girocode;
