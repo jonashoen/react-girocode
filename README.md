@@ -14,7 +14,7 @@ import Girocode from "react-girocode";
 
 Minimal information:
 
-```ts
+```js
 <Girocode recipient="John Doe" iban="DE00112233445566778899" />
 ```
 
@@ -22,7 +22,7 @@ Minimal information:
 
 Typical use case:
 
-```ts
+```js
 <Girocode
   recipient="John Doe"
   iban="DE00112233445566778899"
@@ -35,7 +35,7 @@ Typical use case:
 
 You can also specify a custom render function if your needs exeed the simple visualization of the qr code:
 
-```ts
+```js
 <Girocode
   recipient="John Doe"
   iban="DE00112233445566778899"
