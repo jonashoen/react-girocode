@@ -1,5 +1,4 @@
 import React from "react";
-import QRCode from "react-qr-code";
 import { electronicFormatIBAN, isValidIBAN, isValidBIC } from "ibantools";
 
 import ServiceTag from "./interfaces/ServiceTag";
@@ -20,7 +19,7 @@ interface Props {
   reference?: string;
   text?: string;
   information?: string;
-  size?: number;
+  render: (data: string) => React.ReactNode;
 }
 
 const Girocode: React.FC<Props> = ({
@@ -32,8 +31,7 @@ const Girocode: React.FC<Props> = ({
   reference,
   text,
   information,
-  size,
-
+  render,
   ...props
 }) => {
   if (!isValidIBAN(electronicFormatIBAN(iban) as string)) {
@@ -61,7 +59,7 @@ const Girocode: React.FC<Props> = ({
 
   const codeData = EpcQrCodeToString(epcQrCode);
 
-  return <QRCode value={codeData} level="M" size={size} />;
+  return render(codeData);
 };
 
 export default Girocode;
