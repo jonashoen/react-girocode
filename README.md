@@ -1,5 +1,7 @@
 # react-girocode
 
+[![npm package](https://badge.fury.io/js/react-girocode.svg)](https://www.npmjs.org/package/react-girocode)
+
 A react component for displaying GiroCodes.
 
 ## Usage
