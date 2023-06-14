@@ -1,5 +1,6 @@
 import React from "react";
 import { electronicFormatIBAN, isValidIBAN, isValidBIC } from "ibantools";
+import QRCode from "react-qr-code";
 
 import ServiceTag from "./interfaces/ServiceTag";
 import Version from "./interfaces/Version";
@@ -8,7 +9,6 @@ import Identification from "./interfaces/Identification";
 
 import StringOfLength from "./interfaces/StringOfLenght";
 import EpcQrCode, { EpcQrCodeToString } from "./interfaces/EpcQrCode";
-import QRCode from "react-qr-code";
 
 interface Props {
   encoding?: Encoding;
