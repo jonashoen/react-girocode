@@ -1,9 +1,9 @@
-import ServiceTag from "@interfaces/ServiceTag";
-import Version from "@interfaces/Version";
-import Encoding from "@interfaces/Encoding";
-import Identification from "@interfaces/Identification";
+import ServiceTag from "./ServiceTag";
+import Version from "./Version";
+import Encoding from "./Encoding";
+import Identification from "./Identification";
 
-import StringOfLength from "@interfaces/StringOfLenght";
+import StringOfLength from "./StringOfLenght";
 
 interface BasicEpcQrCode {
   serviceTag: ServiceTag;
