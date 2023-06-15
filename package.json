@@ -1,6 +1,6 @@
 {
   "name": "react-girocode",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A react component for displaying an EPC-QR-Code",
   "main": "src/girocode",
   "scripts": {
