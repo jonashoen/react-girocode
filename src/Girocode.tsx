@@ -35,7 +35,7 @@ const Girocode: React.FC<Props> = ({
   render,
   ...props
 }) => {
-  if (!isValidIBAN(electronicFormatIBAN(iban) as string)) {
+  if (!isValidIBAN(electronicFormatIBAN(iban)!)) {
     throw Error(`Invalid IBAN "${iban}"`);
   }
 
@@ -51,7 +51,7 @@ const Girocode: React.FC<Props> = ({
     identification: Identification.SCT,
     bic,
     recipient: StringOfLength(recipient, { max: 70 }),
-    iban,
+    iban: electronicFormatIBAN(iban)!,
     reason: StringOfLength(reason, { max: 4 }),
     reference: StringOfLength(reference, { max: 25 }),
     text: StringOfLength(text, { max: 140 }),
