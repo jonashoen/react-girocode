@@ -2,7 +2,7 @@
 
 [![npm package](https://badge.fury.io/js/react-girocode.svg)](https://www.npmjs.org/package/react-girocode)
 
-A react component for displaying GiroCodes.
+A react component for displaying GiroCodes ([EPC QR code](https://en.wikipedia.org/wiki/EPC_QR_code)).
 
 ## Usage
 
@@ -19,6 +19,11 @@ Minimal information:
 ```js
 <Girocode recipient="John Doe" iban="DE23 3702 0500 0008 0901 00" />
 ```
+
+The GiroCode of the above example looks like this:
+</br>
+
+![example GiroCode](https://raw.githubusercontent.com/jonashoen/react-girocode/main/example_girocode.png)
 
 </br>
 
@@ -67,4 +72,4 @@ interface Props {
 }
 ```
 
-The input data gets validated by this package. So the IBAN, BIC and string input needs to be valid. Some string parameters have a maximum lenght.
+The input data gets validated by this package. So the IBAN, BIC and string inputs need to be valid. Some string parameters have a maximum lenght.
