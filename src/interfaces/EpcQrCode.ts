@@ -1,11 +1,11 @@
-import ServiceTag from "./ServiceTag";
-import Version from "./Version";
-import Encoding from "./Encoding";
-import Identification from "./Identification";
+import ServiceTag from "@interfaces/ServiceTag";
+import Version from "@interfaces/Version";
+import Encoding from "@interfaces/Encoding";
+import Identification from "@interfaces/Identification";
 
-import StringOfLength from "./StringOfLenght";
+import StringOfLength from "@interfaces/StringOfLenght";
 
-interface EpcQrCode {
+interface BasicEpcQrCode {
   serviceTag: ServiceTag;
   version: Version;
   encoding: Encoding;
@@ -15,10 +15,20 @@ interface EpcQrCode {
   iban: string;
   amount?: number;
   reason?: StringOfLength<4>;
-  reference?: StringOfLength<25>;
-  text?: StringOfLength<140>;
   information?: StringOfLength<70>;
 }
+
+interface EpcQrCodeWithReference extends BasicEpcQrCode {
+  reference?: StringOfLength<25>;
+  text?: never;
+}
+
+interface EpcQrCodeWithText extends BasicEpcQrCode {
+  reference?: never;
+  text?: StringOfLength<140>;
+}
+
+type EpcQrCode = EpcQrCodeWithReference | EpcQrCodeWithText;
 
 const EpcQrCodeToString = (epcQrCode: EpcQrCode) => {
   const data = [

@@ -2,38 +2,48 @@ import React from "react";
 import { electronicFormatIBAN, isValidIBAN, isValidBIC } from "ibantools";
 import QRCode from "react-qr-code";
 
-import ServiceTag from "./interfaces/ServiceTag";
-import Version from "./interfaces/Version";
-import Encoding from "./interfaces/Encoding";
-import Identification from "./interfaces/Identification";
+import ServiceTag from "@interfaces/ServiceTag";
+import Version from "@interfaces/Version";
+import Encoding from "@interfaces/Encoding";
+import Identification from "@interfaces/Identification";
 
-import StringOfLength from "./interfaces/StringOfLenght";
-import EpcQrCode, { EpcQrCodeToString } from "./interfaces/EpcQrCode";
+import StringOfLength from "@interfaces/StringOfLenght";
+import EpcQrCode, { EpcQrCodeToString } from "@interfaces/EpcQrCode";
 
-interface Props {
+interface BasicProps {
   encoding?: Encoding;
   bic?: string;
   recipient: string;
   iban: string;
   amount?: number;
   reason?: string;
-  reference?: string;
-  text?: string;
   information?: string;
   render?: (data: string) => React.ReactNode;
 }
+
+interface PropsWithReference extends BasicProps {
+  reference?: string;
+  text?: never;
+}
+
+interface PropsWithText extends BasicProps {
+  reference?: never;
+  text?: string;
+}
+
+type Props = PropsWithReference | PropsWithText;
 
 const Girocode: React.FC<Props> = ({
   encoding = Encoding.UTF_8,
   bic,
   recipient,
   iban,
+  amount,
   reason,
   reference,
   text,
   information,
   render,
-  ...props
 }) => {
   if (!isValidIBAN(electronicFormatIBAN(iban)!)) {
     throw Error(`Invalid IBAN "${iban}"`);
@@ -44,7 +54,6 @@ const Girocode: React.FC<Props> = ({
   }
 
   const epcQrCode: EpcQrCode = {
-    ...props,
     serviceTag: ServiceTag.BCD,
     version: Version.Two,
     encoding,
@@ -52,11 +61,18 @@ const Girocode: React.FC<Props> = ({
     bic,
     recipient: StringOfLength(recipient, { max: 70 }),
     iban: electronicFormatIBAN(iban)!,
+    amount,
     reason: StringOfLength(reason, { max: 4 }),
-    reference: StringOfLength(reference, { max: 25 }),
-    text: StringOfLength(text, { max: 140 }),
     information: StringOfLength(information, { max: 70 }),
   };
+
+  if (reference) {
+    epcQrCode.reference = StringOfLength(reference, { max: 25 });
+  }
+
+  if (text) {
+    epcQrCode.text = StringOfLength(text, { max: 140 });
+  }
 
   const codeData = EpcQrCodeToString(epcQrCode);
 
