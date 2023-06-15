@@ -73,3 +73,5 @@ interface Props {
 ```
 
 The input data gets validated by this package. So the IBAN, BIC and string inputs need to be valid. Some string parameters have a maximum lenght.
+
+Also notice that the parameters `reference` and `text` can't be present at the same time.
