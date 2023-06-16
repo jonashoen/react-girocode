@@ -6,7 +6,9 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "version": "npm run build",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test",
+    "postversion": "git push",
     "test": "jest"
   },
   "author": "Jonas Hönisch",
