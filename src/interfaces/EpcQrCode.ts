@@ -36,15 +36,17 @@ const EpcQrCodeToString = (epcQrCode: EpcQrCode) => {
     epcQrCode.version,
     epcQrCode.encoding,
     epcQrCode.identification,
-    epcQrCode.bic ?? "",
+    epcQrCode.bic,
     epcQrCode.recipient,
     epcQrCode.iban,
-    epcQrCode.amount ? `EUR${epcQrCode.amount.toFixed(2)}` : "",
-    epcQrCode.reason ?? "",
-    epcQrCode.reference ?? "",
-    epcQrCode.text ?? "",
-    epcQrCode.information ?? "",
-  ];
+    epcQrCode.amount !== undefined
+      ? `EUR${epcQrCode.amount.toFixed(2)}`
+      : undefined,
+    epcQrCode.reason,
+    epcQrCode.reference,
+    epcQrCode.text,
+    epcQrCode.information,
+  ].map((line) => line ?? "");
 
   return data.join("\n");
 };
