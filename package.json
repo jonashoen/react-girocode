@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "author": "Jonas Hönisch",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "girocode",
     "react",
