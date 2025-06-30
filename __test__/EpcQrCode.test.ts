@@ -54,7 +54,7 @@ describe("EpcQrCode tests", () => {
       iban: "DE23 3702 0500 0008 0901 00",
       amount: 42,
       reason: StringOfLength("Foo", { max: 4 }),
-      // text: StringOfLength("Bar", { max: 140 }),
+      text: StringOfLength("Bar", { max: 140 }),
 
       information: StringOfLength("Foo Bar", { max: 70 }),
     });
