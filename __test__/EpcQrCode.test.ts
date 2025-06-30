@@ -18,7 +18,7 @@ describe("EpcQrCode tests", () => {
       recipient: StringOfLength("John Doe", { max: 70 }),
       iban: "DE23 3702 0500 0008 0901 00",
       amount: 42,
-      reason: StringOfLength("Foo", { max: 4 }),
+      purpose: StringOfLength("Foo", { max: 4 }),
       reference: StringOfLength("Bar", { max: 25 }),
       information: StringOfLength("Foo Bar", { max: 70 }),
     });
@@ -53,7 +53,7 @@ describe("EpcQrCode tests", () => {
       recipient: StringOfLength("John Doe", { max: 70 }),
       iban: "DE23 3702 0500 0008 0901 00",
       amount: 42,
-      reason: StringOfLength("Foo", { max: 4 }),
+      purpose: StringOfLength("Foo", { max: 4 }),
       text: StringOfLength("Bar", { max: 140 }),
 
       information: StringOfLength("Foo Bar", { max: 70 }),

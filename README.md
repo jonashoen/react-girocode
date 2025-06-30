@@ -64,7 +64,7 @@ interface Props {
   recipient: string; // maximum lenght of 70
   iban: string;
   amount?: number;
-  reason?: string; // maximum lenght of 4
+  purpose?: string; // maximum lenght of 4
   reference?: string; // maximum lenght of 25
   text?: string; // maximum lenght of 140
   information?: string; // maximum lenght of 70

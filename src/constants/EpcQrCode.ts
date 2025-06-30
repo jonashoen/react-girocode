@@ -15,7 +15,7 @@ interface BasicEpcQrCode {
   recipient: StringOfLength<70>;
   iban: string;
   amount?: number;
-  reason?: StringOfLength<4>;
+  purpose?: StringOfLength<4>;
   information?: StringOfLength<70>;
 }
 
@@ -43,7 +43,7 @@ export const epcQrCodeToString = (epcQrCode: EpcQrCode) => {
     epcQrCode.amount !== undefined
       ? `EUR${epcQrCode.amount.toFixed(2)}`
       : undefined,
-    epcQrCode.reason,
+    epcQrCode.purpose,
     epcQrCode.reference,
     epcQrCode.text,
     epcQrCode.information,

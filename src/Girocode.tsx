@@ -18,7 +18,7 @@ interface BasicProps {
   recipient: string;
   iban: string;
   amount?: number;
-  reason?: string;
+  purpose?: string;
   information?: string;
   render?: (data: string) => React.ReactNode;
 }
@@ -41,7 +41,7 @@ export function Girocode({
   recipient,
   iban,
   amount,
-  reason,
+  purpose,
   reference,
   text,
   information,
@@ -64,7 +64,7 @@ export function Girocode({
     recipient: StringOfLength(recipient, { max: 70 }),
     iban: electronicFormatIBAN(iban)!,
     amount,
-    reason: StringOfLength(reason, { max: 4 }),
+    purpose: StringOfLength(purpose, { max: 4 }),
     information: StringOfLength(information, { max: 70 }),
   };
 

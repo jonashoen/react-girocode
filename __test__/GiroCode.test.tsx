@@ -1,3 +1,4 @@
+import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
@@ -69,17 +70,17 @@ describe("Girocode tests", () => {
   test("Input with limited lenght to long", () => {
     const consoleMock = jest.spyOn(console, "error").mockImplementation();
 
-    const reason = "Foo Bar";
+    const purpose = "Foo Bar";
 
     expect(() =>
       render(
         <Girocode
           iban="DE23 3702 0500 0008 0901 00"
           recipient="John Doe"
-          reason={reason}
+          purpose={purpose}
         />
       )
-    ).toThrow(`Input "${reason}" is longer than specified max lenght 4`);
+    ).toThrow(`Input "${purpose}" is longer than specified max lenght 4`);
 
     consoleMock.mockRestore();
   });
