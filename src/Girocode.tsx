@@ -2,13 +2,15 @@ import React from "react";
 import { electronicFormatIBAN, isValidIBAN, isValidBIC } from "ibantools";
 import QRCode from "react-qr-code";
 
-import ServiceTag from "./interfaces/ServiceTag";
-import Version from "./interfaces/Version";
-import Encoding from "./interfaces/Encoding";
-import Identification from "./interfaces/Identification";
-
-import StringOfLength from "./interfaces/StringOfLenght";
-import EpcQrCode, { EpcQrCodeToString } from "./interfaces/EpcQrCode";
+import {
+  Encoding,
+  EpcQrCode,
+  epcQrCodeToString,
+  Identification,
+  ServiceTag,
+  StringOfLength,
+  Version,
+} from "./constants";
 
 interface BasicProps {
   encoding?: Encoding;
@@ -33,7 +35,7 @@ interface PropsWithText extends BasicProps {
 
 type Props = PropsWithReference | PropsWithText;
 
-const Girocode: React.FC<Props> = ({
+export function Girocode({
   encoding = Encoding.UTF_8,
   bic,
   recipient,
@@ -44,7 +46,7 @@ const Girocode: React.FC<Props> = ({
   text,
   information,
   render,
-}) => {
+}: Props): React.ReactNode {
   if (!isValidIBAN(electronicFormatIBAN(iban)!)) {
     throw Error(`Invalid IBAN "${iban}"`);
   }
@@ -74,13 +76,11 @@ const Girocode: React.FC<Props> = ({
     epcQrCode.text = StringOfLength(text, { max: 140 });
   }
 
-  const codeData = EpcQrCodeToString(epcQrCode);
+  const codeData = epcQrCodeToString(epcQrCode);
 
   if (render) {
     return render(codeData);
   }
 
   return <QRCode value={codeData} level="M" />;
-};
-
-export default Girocode;
+}

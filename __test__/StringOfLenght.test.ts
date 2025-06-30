@@ -1,4 +1,4 @@
-import StringOfLength from "../src/interfaces/StringOfLenght";
+import { StringOfLength } from "../src/constants";
 
 describe("StringOfLength tests", () => {
   test("Input string to long", () => {

@@ -1,3 +1,1 @@
-import Girocode from "./Girocode";
-
-export default Girocode;
+export { Girocode } from "./Girocode";

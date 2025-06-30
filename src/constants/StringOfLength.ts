@@ -1,12 +1,12 @@
-type StringOfLength<Max> = string & {
+export type StringOfLength<Max> = string & {
   max: Max;
   readonly StringOfLength: unique symbol;
 };
 
-const StringOfLength = <Max extends number>(
+export function StringOfLength<Max extends number>(
   input: string | undefined,
   { max }: { max: Max }
-): StringOfLength<Max> => {
+): StringOfLength<Max> {
   if (input === undefined) {
     return StringOfLength("", { max });
   }
@@ -18,6 +18,4 @@ const StringOfLength = <Max extends number>(
   }
 
   return input as StringOfLength<Max>;
-};
-
-export default StringOfLength;
+}

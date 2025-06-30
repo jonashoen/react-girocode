@@ -1,9 +1,10 @@
-import ServiceTag from "./ServiceTag";
-import Version from "./Version";
-import Encoding from "./Encoding";
-import Identification from "./Identification";
-
-import StringOfLength from "./StringOfLenght";
+import {
+  Encoding,
+  Identification,
+  ServiceTag,
+  StringOfLength,
+  Version,
+} from ".";
 
 interface BasicEpcQrCode {
   serviceTag: ServiceTag;
@@ -28,9 +29,9 @@ interface EpcQrCodeWithText extends BasicEpcQrCode {
   text?: StringOfLength<140>;
 }
 
-type EpcQrCode = EpcQrCodeWithReference | EpcQrCodeWithText;
+export type EpcQrCode = EpcQrCodeWithReference | EpcQrCodeWithText;
 
-const EpcQrCodeToString = (epcQrCode: EpcQrCode) => {
+export const epcQrCodeToString = (epcQrCode: EpcQrCode) => {
   const data = [
     epcQrCode.serviceTag,
     epcQrCode.version,
@@ -50,6 +51,3 @@ const EpcQrCodeToString = (epcQrCode: EpcQrCode) => {
 
   return data.join("\n");
 };
-
-export default EpcQrCode;
-export { EpcQrCodeToString };

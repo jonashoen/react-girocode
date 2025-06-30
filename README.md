@@ -8,15 +8,15 @@ A react component for displaying GiroCodes ([EPC QR code](https://en.wikipedia.o
 
 ### Import
 
-```ts
-import Girocode from "react-girocode";
+```tsx
+import { Girocode } from "react-girocode";
 ```
 
 ### Use
 
 Minimal information:
 
-```js
+```tsx
 <Girocode recipient="John Doe" iban="DE23 3702 0500 0008 0901 00" />
 ```
 
@@ -29,7 +29,7 @@ The GiroCode of the above example looks like this:
 
 Typical use case:
 
-```js
+```tsx
 <Girocode
   recipient="John Doe"
   iban="DE23 3702 0500 0008 0901 00"
@@ -42,7 +42,7 @@ Typical use case:
 
 You can also specify a custom render function if your needs exeed the simple visualization of the qr code:
 
-```js
+```tsx
 <Girocode
   recipient="John Doe"
   iban="DE23 3702 0500 0008 0901 00"
@@ -57,7 +57,7 @@ Please notice that when displaying the GiroCode as qr code the error correction 
 
 All available parameters:
 
-```ts
+```tsx
 interface Props {
   encoding?: Encoding;
   bic?: string;
